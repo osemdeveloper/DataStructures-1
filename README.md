@@ -1,2 +1,2 @@
 # DataStructures-1
- Basic code snippets explaning about the widely used data structures.
+ Code snippets explaning about the most used data structures in an basic level.
