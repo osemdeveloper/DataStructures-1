@@ -1,5 +1,7 @@
 package Arrays;
 
+import java.util.Arrays;
+
 class Book{
 	private String title;
 	private String author;
@@ -41,7 +43,16 @@ public class DynamicArrayBookInventory {
 	}
 	
 	private void increaseCapacity() {
-		
+		capacity *= 2;
+		books = Arrays.copyOf(books, capacity);
+	}
+	
+	public void printInventory() {
+		System.out.println("Bookstore Inventory: ");
+		for(int i=0; i< size; i++) {
+			Book book = books[i];
+			System.out.println("Title: " + book.getTitle() + "Author: " + book.getAuthor());
+		}
 	}
 
 }
