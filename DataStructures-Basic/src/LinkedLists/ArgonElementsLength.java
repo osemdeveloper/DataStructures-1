@@ -1,5 +1,15 @@
 package LinkedLists;
 
+import java.net.URL;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+//import org.json.JSONArray;
+//import org.json.JSONObject;
+
 class Element {
 	String name;
 	Element next;
@@ -54,5 +64,33 @@ class PeriodicTable {
 }
 
 public class ArgonElementsLength {
+
+	public static void main(String[] args) {
+		PeriodicTable periodicTable = new PeriodicTable();
+		
+		try {
+			String apiUrl = "https://neelpatel05.pythonanywhere.com/get_all_elements";
+			URL url =new URL(apiUrl);
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("GET");
+			
+			int responseCode = connection.getResponseCode();
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+				StringBuilder response = new StringBuilder();
+				String line;
+				
+				while((line = reader.readLine()) != null) {
+					response.append(line);
+				}
+				
+				reader.close();
+				
+//				JSONArray elementsArray = new JSONArray(response.toString());
+			}
+		} else {
+			System.out.println("adbhsvkfv");
+		}
+	}
 
 }
